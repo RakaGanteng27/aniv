@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy 5th Anniversary 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,system-ui,sans-serif}
+body{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);color:#fff;overflow:hidden}
+
+/* HANDWRITTEN TITLE */
+h1,h2{
+  font-family:'Pacifico',cursive;
+  letter-spacing:1px;
+  text-shadow:0 4px 12px rgba(255,255,255,.35);
+}
+.subtitle,
+.page>p:first-of-type{
+  font-family:'Dancing Script',cursive;
+  font-size:1.15em;
+}
+
+/* ENVELOPE */
+#envelope-screen{
+  position:fixed;inset:0;z-index:10;
+  display:flex;justify-content:center;align-items:center;
+  background:linear-gradient(135deg,#fbc2eb,#fad0c4)
+}
+.envelope{width:220px;height:150px;background:#fff;border-radius:12px;position:relative;cursor:pointer}
+.envelope::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,#ffd1dc,#ffb6c1);
+  clip-path:polygon(0 0,50% 60%,100% 0,100% 100%,0 100%);
+  border-radius:12px
+}
+.flap{
+  position:absolute;inset:0;background:#ffb6c1;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  transform-origin:top;transition:1s
+}
+.envelope.open .flap{transform:rotateX(180deg)}
+
+/* PAGES */
+.pages{display:flex;width:400vw;height:100vh;transition:.6s ease}
+.page{
+  width:100vw;height:100vh;padding:24px;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  overflow:hidden;position:relative;
+}
+
+/* NAV */
+.nav{position:fixed;bottom:20px;width:100%;display:flex;justify-content:space-between;padding:0 24px;z-index:5}
+button{
+  border:none;padding:10px 18px;border-radius:20px;
+  background:rgba(255,255,255,.3);color:#fff
+}
+
+.card{
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);
+  padding:24px;
+  border-radius:20px;
+  max-width:420px;
+  margin-top:20px;
+  color:#4a2c3a;
+}
+
+.card p{
+  color:#4a2c3a;
+}
+
+h1, h2{
+  color:#fff;
+}
+
+.subtitle,
+.page > p{
+  color:#6b3e52;
+}
+
+
+/* SLIDER */
+.slider{
+  width:100%;
+  overflow:hidden;
+  margin-top:30px;
+  padding:40px 0;
+  position:relative;
+}
+
+/* efek gelap lembut kiri */
+.slider::before,
+.slider::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:80px;
+  height:100%;
+  z-index:5;
+  pointer-events:none;
+}
+
+.slider::before{
+  left:0;
+  background:linear-gradient(to right, rgba(251,194,235,1), transparent);
+}
+
+.slider::after{
+  right:0;
+  background:linear-gradient(to left, rgba(166,193,238,1), transparent);
+}
+
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: max-content;   /* penting */
+  animation: scroll 45s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+.photo {
+  position: relative;
+  flex-shrink: 0;
+  transition: transform .6s ease;
+  transform-origin: center center;
+  width: 150px; /* Tetapkan lebar tetap untuk setiap foto */
+}
+
+.photo img {
+  width: 100%; /* Ubah untuk menggunakan 100% dari lebar .photo */
+  height: auto; /* Biarkan tinggi otomatis untuk menjaga rasio aspek */
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  transition: transform .6s ease;
+}
+
+.photo.active{transform:scale(1.3); z-index:10;}
+.photo span{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:8px;font-size:.9em;
+  font-family:'Dancing Script',cursive;
+  background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0));
+  border-radius:0 0 16px 16px
+}
+
+/* VIDEO */
+video{width:90%;max-width:420px;border-radius:18px}
+
+/* LOVE */
+/* LOVE EFFECT */
+.love{
+  position:fixed;
+  top:-10px;
+  font-size:22px;
+  animation:fall linear forwards;
+  pointer-events:none;
+  z-index:999;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.2));
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+@keyframes fall{to{transform:translateY(110vh);opacity:0}}
+
+/* =========================
+   CARD UCAPAN
+   ========================= */
+.card{
+  /* ukuran */
+  width: 420px;        /* lebar default di layar besar */
+  max-width: 90%;      /* supaya aman di mobile */
+  height: auto;        /* tinggi mengikuti isi */
+
+  /* posisi */
+  margin: 0 auto;      /* center horizontal */
+
+  /* tampilan */
+  background: rgba(255,255,255,0.9); /* putih transparan */
+  backdrop-filter: blur(12px);       /* efek kaca */
+  border-radius: 22px;               /* sudut melengkung */
+  padding: 24px;                     /* jarak teks ke tepi */
+
+  /* bayangan */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+  /* animasi masuk */
+  animation: fadeUp 1s ease;
+}
+
+/* =========================
+   TEKS MESSAGE
+   ========================= */
+.message{
+  font-size: 16px;     /* ukuran teks */
+  line-height: 1.8;    /* jarak antar baris */
+  color: #444;         /* warna teks (lebih kontras) */
+  text-align: center;  /* teks rata tengah */
+
+  /* supaya teks panjang rapi */
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* =========================
+   JIKA PESAN SANGAT PANJANG
+   ========================= */
+.card.long-message{
+  max-height: 75vh;    /* maksimal tinggi 75% layar */
+  overflow-y: auto;    /* bisa scroll ke bawah */
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+   ========================= */
+@media (max-width:480px){
+  .card{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .message{
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* =========================
+   ANIMASI CARD MASUK
+   ========================= */
+@keyframes fadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="lagu.mp3">
+</audio>
+
+<div id="envelope-screen">
+  <div>
+    <div class="envelope" onclick="openEnvelope()">
+      <div class="flap"></div>
+    </div>
+    <p class="subtitle" style="margin-top:14px">Tap amplopnya dongss 💌</p>
+  </div>
+</div>
+
+<div class="pages" id="pages">
+
+<section class="page">
+  <h1>Happy 5th Anniversary sayaaangg 💕</h1>
+  <p class="subtitle">27 Maret • 5 Tahun Bersama</p>
+  <p id="counter" class="subtitle" style="margin-top:10px"></p>
+
+  <div class="card">
+    <p class="subtitle">
+      27 maret bukan sesuatu yg asing di telinga kita bukan??<br>
+      Lima tahun bukan waktu yang singkat 💖<br>
+      Terima kasih sudah selalu ada ketika senang maupun sulit 🤍
+    </p>
+  </div>
+
+  <button onclick="openMessage()" style="margin-top:18px">
+    💌 Message from me to you
+  </button>
+</section>
+
+<section class="page">
+  <h2>Our Memories 📸</h2>
+  <div class="slider">
+    <div class="track">
+      <div class="photo"><img src="foto1.jpeg"><span>First foto berdua wkwk 💕</span></div>
+      <div class="photo"><img src="foto2.jpeg"><span>Pertama kali kamu jadi pasukan kecamatan 🤍</span></div>
+      <div class="photo"><img src="foto3.jpeg"><span>Momen terseruu KITAAA!!! ✨</span></div>
+      <div class="photo"><img src="foto4.jpeg"><span>Pas aku turnamenn tapi kalahh huu 😢</span></div>
+      <div class="photo"><img src="foto5.jpeg"><span>Momen yg banyak berduanya pas uprak 💖</span></div>
+      <div class="photo"><img src="foto6.jpeg"><span>Kelulusann kitaa >.< 🤍</span></div>
+      <div class="photo"><img src="foto7.jpeg"><span>Kenangan manis, perayaan aniv ketiga ✨</span></div>
+      <div class="photo"><img src="foto8.jpeg"><span>Foto terlucu menurutt akuu 🥹</span></div>
+      <div class="photo"><img src="foto9.jpeg"><span>Dan inii ketika kamu lombaa 😊</span></div>
+      <div class="photo"><img src="foto10.jpeg"><span>Momenn kitaa kembali lagii 💕</span></div>
+     <div class="photo"><img src="foto1.jpeg"><span>First foto berdua wkwk 💕</span></div>
+      <div class="photo"><img src="foto2.jpeg"><span>Pertama kali kamu jadi pasukan kecamatan 🤍</span></div>
+      <div class="photo"><img src="foto3.jpeg"><span>Momen terseruu KITAAA!!! ✨</span></div>
+      <div class="photo"><img src="foto4.jpeg"><span>Pas aku turnamenn tapi kalahh huu 😢</span></div>
+      <div class="photo"><img src="foto5.jpeg"><span>Momen yg banyak berduanya pas uprak 💖</span></div>
+      <div class="photo"><img src="foto6.jpeg"><span>Kelulusann kitaa >.< 🤍</span></div>
+      <div class="photo"><img src="foto7.jpeg"><span>Kenangan manis, perayaan aniv ketiga ✨</span></div>
+      <div class="photo"><img src="foto8.jpeg"><span>Foto terlucu menurutt akuu 🥹</span></div>
+      <div class="photo"><img src="foto9.jpeg"><span>Dan inii ketika kamu lombaa 😊</span></div>
+      <div class="photo"><img src="foto10.jpeg"><span>Momenn kitaa kembali lagii 💕</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="page">
+  <h2>Our Video 🎬</h2>
+  <video src="video.mp4" controls playsinline></video>
+</section>
+
+<section class="page">
+  <p class="subtitle">Dan setelah semua ini…</p>
+  <h1>Aku masih ingin bersamamu 🤍</h1>
+  <button onclick="alert('Selamanya 🤍')" style="font-size:1.1em;padding:14px 28px">
+    Selamanya?
+  </button>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prev()">←</button>
+  <button onclick="next()">→</button>
+</div>
+
+<div id="messageBox" class="card long-message" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; justify-content:center; align-items:center; background:rgba(0,0,0,0.25);">
+  <div style="max-width:480px; margin:auto; background:rgba(255,255,255,0.97); border-radius:22px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.15); display:flex; flex-direction:column; justify-content:space-between; min-height:320px;">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+      <p class="message">
+        Kalau kamu baca ini…<br>
+        terima kasih sudah memilih aku,memilih untuk menemanimu
+        di setiap langkah hidupmu selama 5 tahun ini 💕
+        Aku janji akan terus berusaha menjadi yang terbaik untukmu
+        dan membuatmu bahagia, maafkan kalau selama ini ada salah dan khilaf 🤍
+        Aku sayang kamu lebih dari kata-kata yang bisa kuungkapkan
+        dan aku harap kita bisa terus bersama di tahun-tahun mendatang
+        melewati suka dan duka,tertawa dan menangis, saling mendukung dan menguatkan satu sama lain
+        Aku ingin menjadi bagian dari hidupmu selamanya, karena kamu adalah segalanya bagiku 💖
+        ini adalah awal dari babak baru dalam kisah kita, dan aku tak sabar untuk melihat apa yang akan datang
+        semoga cinta kita terus tumbuh dan berkembang selamanya 🤍
+        Happy 5th Anniversary sayanggg 💖
+        Aku cinta kamu
+        setiap hari 🤍
+      </p>
+    </div>
+    <button onclick="closeMessage()" style="margin-top:24px; align-self:center; padding:10px 28px; border-radius:20px; background:#ffb6c1; color:#fff; border:none; font-size:1em;">Tutup</button>
+  </div>
+</div>
+
+<script>
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+  setTimeout(()=>{
+    document.getElementById('envelope-screen').style.display='none';
+
+    const music = document.getElementById('music');
+    music.volume = 0;
+    music.play();
+
+    let vol = 0;
+    const fade = setInterval(()=>{
+      if(vol < 0.6){
+        vol += 0.02;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    },200);
+  },900);
+}
+
+let page=0;
+function update(){pages.style.transform=`translateX(-${page*100}vw)`;}
+function next(){if(page<3)page++;update();}
+function prev(){if(page>0)page--;update();}
+
+const startDate=new Date("2021-03-27");
+function counter(){
+  const now=new Date();
+  let y=now.getFullYear()-startDate.getFullYear();
+  let m=now.getMonth()-startDate.getMonth();
+  let d=now.getDate()-startDate.getDate();
+  if(d<0){m--;d+=30}
+  if(m<0){y--;m+=12}
+  counter.innerHTML=`Aku sudah bersamanya sejak <b>27 Maret 2021</b><br>
+  <b>${y} tahun ${m} bulan ${d} hari</b> 💕`;
+}
+setInterval(counter,1000);counter();
+
+function openMessage(){messageBox.style.display="flex"}
+function closeMessage(){messageBox.style.display="none"}
+
+// LOVE JATUH OTOMATIS
+setInterval(()=>{
+  const love=document.createElement("div");
+  love.className="love";
+  love.innerHTML="💖";
+  love.style.left=Math.random()*100+"vw";
+  love.style.animationDuration=(4+Math.random()*3)+"s";
+  document.body.appendChild(love);
+  setTimeout(()=>love.remove(),7000);
+},600);
+
+// LOVE SAAT TAP / CLICK
+document.addEventListener("click",e=>{
+  const love=document.createElement("div");
+  love.className="love";
+  love.innerHTML="💗";
+  love.style.left=e.clientX+"px";
+  love.style.top=e.clientY+"px";
+  love.style.animationDuration="2s";
+  document.body.appendChild(love);
+  setTimeout(()=>love.remove(),2000);
+});
+
+// Highlight the photo closest to the viewport center (auto-zoom)
+const photos = document.querySelectorAll('.photo');
+function updateActivePhoto(){
+  if(!photos.length) return requestAnimationFrame(updateActivePhoto);
+  const centerX = window.innerWidth / 2;
+  let closest = null, minDist = Infinity;
+  photos.forEach(p => {
+    const r = p.getBoundingClientRect();
+    const px = r.left + r.width / 2;
+    const dist = Math.abs(px - centerX);
+    if(dist < minDist){ minDist = dist; closest = p; }
+  });
+  photos.forEach(p => p.classList.toggle('active', p === closest));
+  requestAnimationFrame(updateActivePhoto);
+}
+requestAnimationFrame(updateActivePhoto);
+
+const track = document.querySelector('.track');
+
+track.addEventListener('touchstart',()=>{
+  track.style.animationPlayState = 'paused';
+});
+
+track.addEventListener('touchend',()=>{
+  track.style.animationPlayState = 'running';
+});
+
+</script>
+
+</body>
+</html>
