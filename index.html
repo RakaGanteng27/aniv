@@ -9,7 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,system-ui,sans-serif}
-body{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);color:#fff;overflow:hidden}
+body{background:linear-gradient(135deg,#fbc2eb,#a6c1ee);color:#fff;overflow-x:hidden}
 
 /* HANDWRITTEN TITLE */
 h1,h2{
@@ -244,6 +244,27 @@ video{width:90%;max-width:420px;border-radius:18px}
   }
 }
 
+@media (max-width: 768px){
+
+  .pages{
+    width:400vw;
+  }
+
+  .page{
+    padding:20px;
+  }
+
+  h1{font-size:22px;}
+  h2{font-size:20px;}
+
+  video{
+    width:100%;
+    max-width:100%;
+  }
+
+}
+
+
 /* =========================
    ANIMASI CARD MASUK
    ========================= */
@@ -326,7 +347,10 @@ video{width:90%;max-width:420px;border-radius:18px}
 
 <section class="page">
   <h2>Our Video 🎬</h2>
-  <video src="video.mp4" controls playsinline></video>
+  <video controls playsinline webkit-playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
 </section>
 
 <section class="page">
