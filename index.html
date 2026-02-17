@@ -44,9 +44,9 @@ h1,h2{
 .envelope.open .flap{transform:rotateX(180deg)}
 
 /* PAGES */
-.pages{display:flex;width:400vw;height:100vh;transition:.6s ease}
+.pages{display:flex;width:400vw;min-height:100vh;transition:.6s ease}
 .page{
-  width:100vw;height:100vh;padding:24px;
+  width:100vw;min-height:100vh;padding:24px;
   display:flex;flex-direction:column;
   justify-content:center;align-items:center;text-align:center;
   overflow:hidden;position:relative;
@@ -347,8 +347,12 @@ video{width:90%;max-width:420px;border-radius:18px}
 
 <section class="page">
   <h2>Our Video 🎬</h2>
-  <video controls playsinline webkit-playsinline>
-  <source src="video.mp4" type="video/mp4">
+    <video 
+  src="video.mp4"
+  controls
+  playsinline
+  preload="metadata"
+  style="width:100%; height:auto; border-radius:20px;">
 </video>
 
 </section>
